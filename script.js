@@ -44,11 +44,9 @@ imageInput.addEventListener("change", function () {
     let currentDate = getDate();
 
     imgHolder.push({ url: uploadImg, date: currentDate });
+    localStorage.clear();
     localStorage.setItem("imgList", JSON.stringify(imgHolder));
-    // console.log(imgHolder);
-    // imageContainer.style.backgroundImage = `url(${uploadImg})`;
-    // let html = document.querySelector(".date");
-    // html.innerHTML = getDate();
+    location.reload();
   });
 });
 
@@ -56,6 +54,7 @@ imageInput.addEventListener("change", function () {
 const imgRender = () => {
   const imgAry = JSON.parse(localStorage.getItem("imgList"));
   if (imgAry != null) {
+    imgHolder = imgAry;
     for (let img of imgAry) {
       let li = createHtml(img);
       console.log(li);

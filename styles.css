@@ -1,5 +1,5 @@
-.imageContainer {
+img {
   background-size: cover;
   background-position: center;
-  height: 400px;
+  width: 400px;
 }
