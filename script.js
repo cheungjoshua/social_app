@@ -27,7 +27,7 @@ const getDate = () => {
   let year = nowDate.getUTCFullYear();
   let day = nowDate.getUTCDate();
   let month = nowDate.toLocaleString("default", { month: "long" });
-  let recentDate = `${year}/${month}/${day}`;
+  let recentDate = `${month} ${day} ${year}`;
   return recentDate;
 };
 
@@ -43,6 +43,7 @@ imageInput.addEventListener("change", function () {
     let currentDate = getDate();
 
     imgHolder.push({ uploadImg, currentDate });
+    localStorage.setItem("imgList", JSON.stringify(imgHolder));
     console.log(imgHolder);
     // imageContainer.style.backgroundImage = `url(${uploadImg})`;
     // let html = document.querySelector(".date");
