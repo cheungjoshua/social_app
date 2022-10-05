@@ -1,5 +1,17 @@
+header {
+  display: flex;
+  height: 80px;
+  background-color: black;
+  color: white;
+}
+
+li {
+  list-style: none;
+  border-radius: 5px;
+}
+
 img {
   background-size: cover;
   background-position: center;
-  width: 400px;
+  width: 300px;
 }

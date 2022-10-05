@@ -33,12 +33,11 @@ const getDate = () => {
 };
 
 // Upload image
-
 imageInput.addEventListener("change", function () {
   const read = new FileReader();
   // need it to convert as URL
   read.readAsDataURL(this.files[0]);
-
+  // after the uploaded, do action
   read.addEventListener("load", () => {
     const uploadImg = read.result;
     let currentDate = getDate();
@@ -57,7 +56,7 @@ const imgRender = () => {
     imgHolder = imgAry;
     for (let img of imgAry) {
       let li = createHtml(img);
-      console.log(li);
+
       feedList.appendChild(li);
     }
   }
