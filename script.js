@@ -8,17 +8,18 @@
 // Get elements
 const imageInput = document.querySelector("#image-input");
 const imageContainer = document.getElementsByClassName("imageContainer");
-const feedList = document.getElementsByClassName("feedList");
+const feedList = document.querySelector(".feedList");
 
 // Create a image holder for save inside the local storge
 let imgHolder = [];
 
 // Create li item for image holder
 const createHtml = (imgObj) => {
-  let div = document.createElement("div");
-  div.innerHTML = ` <img src="${imgObj.url}" alt="">
+  let li = document.createElement("li");
+  let html = ` <img src="${imgObj.url}" alt="">
                         <p class="date">${imgObj.date}</p>`;
-  return div;
+  li.innerHTML = li.innerHTML + html;
+  return li;
 };
 
 // Get current date with perfect format
@@ -42,9 +43,9 @@ imageInput.addEventListener("change", function () {
     const uploadImg = read.result;
     let currentDate = getDate();
 
-    imgHolder.push({ uploadImg, currentDate });
+    imgHolder.push({ url: uploadImg, date: currentDate });
     localStorage.setItem("imgList", JSON.stringify(imgHolder));
-    console.log(imgHolder);
+    // console.log(imgHolder);
     // imageContainer.style.backgroundImage = `url(${uploadImg})`;
     // let html = document.querySelector(".date");
     // html.innerHTML = getDate();
@@ -53,11 +54,14 @@ imageInput.addEventListener("change", function () {
 
 // Render image
 const imgRender = () => {
-  const imgAry = localStorage.getItem("imgList");
+  const imgAry = JSON.parse(localStorage.getItem("imgList"));
   if (imgAry != null) {
     for (let img of imgAry) {
-      let temDiv = createHtml(img);
-      feedList.appendChild(temDiv);
+      let li = createHtml(img);
+      console.log(li);
+      feedList.appendChild(li);
     }
   }
 };
+
+imgRender();
