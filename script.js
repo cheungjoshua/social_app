@@ -1,10 +1,3 @@
-// When page load call imgRender function
-// User upload pic with upload function
-// push pic to array as object and json.stringtfy
-// upload function save image in local storage
-// After setItem reload page
-// when page after reload call imgRender function
-
 // Get elements
 const imageInput = document.querySelector("#image-input");
 const imageContainer = document.getElementsByClassName("imageContainer");
@@ -17,7 +10,7 @@ let imgHolder = [];
 const createHtml = (imgObj) => {
   let li = document.createElement("li");
   let html = ` <img src="${imgObj.url}" alt="">
-                        <p class="date">${imgObj.date}</p>`;
+              <p class="date">${imgObj.date}</p>`;
   li.innerHTML = li.innerHTML + html;
   return li;
 };
